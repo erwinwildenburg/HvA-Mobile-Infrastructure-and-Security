@@ -2,11 +2,14 @@ package net.erwinwildenburg.app;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
@@ -14,10 +17,12 @@ public class LocationHandler implements LocationListener {
 
     private Context context = null;
     private LocationManager locationManager = null;
+    private SharedPreferences sharedPreferences = null;
 
     public LocationHandler(Context context) {
         this.context = context;
         this.locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
+        this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
         // Check if we have the required permissions
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -40,7 +45,9 @@ public class LocationHandler implements LocationListener {
         final String altitude = String.format(Double.toString(location.getAltitude()));
         final String speed = String.format(Double.toString(location.getSpeed()));
 
-        // TODO: Save these with the API
+        if(sharedPreferences.getString("sync_frequency", "") != "-1") {
+            // TODO: Save these with the API
+        }
 
         // Run on the UI thread so the user can see the results
         ((MainActivity)context).runOnUiThread(new Runnable() {
