@@ -1,5 +1,6 @@
 package net.erwinwildenburg.app;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,8 +9,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private LocationHandler locationHandler = null;
+    private SettingsHandler settingsHandler = null;
+
+    public TextView currentLongitude = null;
+    public TextView currentLatitude = null;
+    public TextView currentAltitude = null;
+    public TextView currentSpeed = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +36,14 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        currentLongitude = findViewById(R.id.textView_longitude_value);
+        currentLatitude = findViewById(R.id.textView_latitude_value);
+        currentAltitude = findViewById(R.id.textView_altitude_value);
+        currentSpeed = findViewById(R.id.textView_speed_value);
+
+        this.locationHandler = new LocationHandler(this);
+        this.settingsHandler = new SettingsHandler(this);
     }
 
     @Override
@@ -48,5 +66,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case 100: // LocationHandler
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    this.locationHandler = new LocationHandler(this);
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 }
