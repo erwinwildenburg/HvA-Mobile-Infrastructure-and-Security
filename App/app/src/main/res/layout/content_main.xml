@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Current data acquired:"
+        android:text="@string/textView_intro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -36,13 +36,13 @@
                 android:id="@+id/textView_longitude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Longitude:" />
+                android:text="@string/textView_longitude" />
 
             <TextView
                 android:id="@+id/textView_longitude_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Loading..." />
+                android:text="@string/textView_loading" />
         </TableRow>
 
         <TableRow
@@ -53,13 +53,13 @@
                 android:id="@+id/textView_latitude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Latitude:" />
+                android:text="@string/textView_latitude" />
 
             <TextView
                 android:id="@+id/textView_latitude_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Loading..." />
+                android:text="@string/textView_loading" />
         </TableRow>
 
         <TableRow
@@ -70,13 +70,13 @@
                 android:id="@+id/textView_altitude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Altitude:" />
+                android:text="@string/textView_altitude" />
 
             <TextView
                 android:id="@+id/textView_altitude_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Loading..." />
+                android:text="@string/textView_loading" />
         </TableRow>
 
         <TableRow
@@ -87,13 +87,13 @@
                 android:id="@+id/textView_speed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Speed:" />
+                android:text="@string/textView_speed" />
 
             <TextView
                 android:id="@+id/textView_speed_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Loading..." />
+                android:text="@string/textView_loading" />
         </TableRow>
     </TableLayout>
 
